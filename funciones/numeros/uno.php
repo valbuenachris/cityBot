@@ -38,7 +38,7 @@ function uno($pdo, $from) {
             }
         elseif ($status === 'aretes' || $status === 'joyas' || $status === 'relojes' || $status === 'gafas' || $status === 'bolsos y carteras' 
         || $status === 'cinturones' || $status === 'menuBuscar' || $status === 'tecnologia' || $status === 'vestidos de baño infantil' 
-        || $status === 'vestidos de baño mujer' 
+        || $status === 'vestidos de baño mujer' || $status === 'blusas' 
         || $status === 'vestidos de baño hombre' || $status === 'pijamas de niño' || $status === 'pijamas de mujer' || $status === 'pijamas de hombre'
          || $status === 'boxer y medias' || $status === 'busos' || $status === 'camisas' || $status === 'moda hombre casual' || $status === 'jeans y pantalones' 
          || $status === 'cobijas' || $status === 'cubrelechos' || $status === 'edredones' || $status === 'sabanas'  || $status === 'toallas'  || $status === 'camas'
