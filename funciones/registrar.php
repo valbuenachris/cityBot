@@ -1,6 +1,5 @@
 <?php
 
-
 // Definición de la función para manejar el caso del estado 'registrar'
 function manejarEstadoRegistrar($pdo, $from, $message) {
     
@@ -17,7 +16,7 @@ function manejarEstadoRegistrar($pdo, $from, $message) {
     // Construir el mensaje del menú
     $menuMessage = '';
     foreach ($menuItems as $item) {
-        $menuMessage .= "Hola *{$item['nombre']}* 💖💄\n";
+        $menuMessage .= "Bienvenido *{$item['nombre']}* 🤖💪🏼\n";
     }
 
     // Establecer la API utilizando la constante definida en api_key.php
@@ -33,11 +32,8 @@ function manejarEstadoRegistrar($pdo, $from, $message) {
     // Enviar solicitud de texto
         $response = sendCurlRequestText($body);
     
-    //////////////////////////////////////////////
-    
     // Construir el mensaje del menú
         $menuMessage = menu($pdo, $from);
-        $menuMessage = footerCombos($pdo, $from);
 
     return $response;
 }

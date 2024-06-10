@@ -75,7 +75,7 @@ function ayuda($pdo, $from) {
         $response = sendCurlRequestText($body);
         
         // Actualizar el estado 
-        update_status($pdo, $from, 'faQayuda');
+        update_status($pdo, $from, 'ayuda');
     }
     
 ?>

@@ -6,95 +6,70 @@ function dos($pdo, $from) {
     $stmt->execute([$from]);
     $status = $stmt->fetchColumn();
     
-    // La primera condicion es solo una puerta. Se debe cambiar al terminar
-    if ($status === 'tonico' || $status === 'protector' || $status === 'serum' || $status === 'hialuronico' || $status === 'kit' || $status === 'niacinamida' 
-    || $status === 'jabon' || $status === 'cremas' || $status === 'desmaquillante' || $status === 'spray' || $status === 'ojeras'
-    || $status === 'hidratar' || $status === 'rosas' || $status === 'corporal' || $status === 'mayorista' || $status === 'tonicoRespuesta' 
-    || $status === 'manchas' || $status === 'contraentrega' || $status === 'faQhorario' || $status === 'faQubicacion' || $status === 'faQmayorista' || $status === 'faQgarantizado' 
-    || $status === 'faQcatalogo' || $status === 'faQmanchas' || $status === 'faQcontraentrega' || $status === 'faQresultados' || $status === 'faQrutina') {
-    
-    // Construir el mensaje del menú
-        $menuMessage = menu($pdo, $from);
+    if ($status === 'inicio') {
+        $menuMessage = tecnologia($pdo, $from, $mensaje);
     }
-
-    elseif ($status === 'inicio') {
-        
-        $menuMessage = protector($pdo, $from);
+    elseif ($status === 'moda') {
+        $menuMessage = menuRopaDeportiva($pdo, $from);
     }
-        
-    elseif ($status === 'menuDos') {
-        
-        $menuMessage = spray($pdo, $from);
-
+    elseif ($status === 'ropaDeportiva') {
+            $menuMessage = ropaDeportivaMujeres($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'confirmarCompra') {
-        
-        $menuMessage = modificarCompra($pdo, $from);
-
+    elseif ($status === 'vestidos de baño') {
+            $menuMessage = vestidosBanoMujer($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'faQayuda') {
-        
-        $menuMessage = asesor($pdo, $from);
+    elseif ($status === 'pijamas') {
+            $menuMessage = pijamasMujer($pdo, $from, $mensaje);
     }
-        
-    elseif ($status === 'preguntas') {
-        
-        $menuMessage = ubicacion($pdo, $from);
+    elseif ($status === 'modaInfantil') {
+            $menuMessage = modaNinas($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'comprarProtector' ) {
-           
-            $menuMessage = comprarProtector120($pdo, $from);
+    elseif ($status === 'modaMujer') {
+            $menuMessage = modaCasual($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'comprarKit' ) {
-           
-            $menuMessage = comprarKitIntermedio($pdo, $from);
+    elseif ($status === 'modaHombre') {
+            $menuMessage = busos($pdo, $from, $mensaje);
     }
-        
-    elseif ($status === 'comprarSpray' ) {
-           
-            $menuMessage = comprarSprayBom($pdo, $from);
+    elseif ($status === 'joyas') {
+            $menuMessage = cadenas($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'comprarContorno' ) {
-           
-            $menuMessage = comprarContornoNoche($pdo, $from);
+    elseif ($status === 'accesorios') {
+            $menuMessage = relojes($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'comprarMantequilla' ) {
-           
-            $menuMessage = comprarMantequillaBom($pdo, $from);
+    elseif ($status === 'hogar') {
+            $menuMessage = menuDecoracion($pdo, $from);
     }
-        
-    elseif ($status === 'comprarCorporal' ) {
-           
-            $menuMessage = comprarCorporalBom($pdo, $from);
+    elseif ($status === 'muebles') {
+            $menuMessage = comedores($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'comprarCombos' ) {
-           
-            $menuMessage = comprarComboDos($pdo, $from);
-        }
-    
-    elseif ($status === 'confirmarCompra' ) {
-           
-            $menuMessage = modificarCompra($pdo, $from);
+    elseif ($status === 'decoracion') {
+            $menuMessage = decoracionExteriores($pdo, $from, $mensaje);
     }
-        
-    elseif ($status === 'metodosPago' ) {
-           
-            $menuMessage = nequi($pdo, $from);
+    elseif ($status === 'ferreteria') {
+            $menuMessage = dotacion($pdo, $from, $mensaje);
+            }
+    elseif ($status === 'ropa cama') {
+            $menuMessage = cubrelechos($pdo, $from, $mensaje);
     }
-    
-    /*
+    elseif ($status === 'cocina') {
+            $menuMessage = ollas($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'mascota') {
+            $menuMessage = mascotasComida($pdo, $from, $mensaje);
+            }
+    elseif ($status === 'estetica y cuidado') {
+            $menuMessage = cremas($pdo, $from, $mensaje);
+            }
+    elseif ($status === 'salud y bienestar') {
+            $menuMessage = farmacias($pdo, $from, $mensaje);
+            }
+    elseif ($status === 'calzado') {
+            $menuMessage = sandalias($pdo, $from, $mensaje);
+            }
     else  {
-        
         $menuMessage = noValida($pdo, $from);
     }
-    */
+    
 }
 
 ?>

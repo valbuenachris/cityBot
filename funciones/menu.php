@@ -1,6 +1,6 @@
 <?php
 
-function headerMenu($pdo, $from) {
+function menu($pdo, $from) {
     
         // Incluir el archivo que contiene la API key
         require_once 'api_key.php';
@@ -28,11 +28,10 @@ function headerMenu($pdo, $from) {
 
         // Enviar solicitud de texto
         $response = sendCurlRequestText($body);
-}
+        
+        
+        /*/////////////   MENSAJE SUBHEADER   ////////////*/
 
-
-function menu($pdo, $from) {
-    
         $stmt = $pdo->query("SELECT * FROM menu");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -55,18 +54,9 @@ function menu($pdo, $from) {
         // Enviar solicitud de texto
         $response = sendCurlRequestText($body);
         
-        // Actualizar el estado 
-        update_status($pdo, $from, 'inicio');
-}
+        /*/////////////   MENSAJE SUBHEADER   ////////////*/
 
-
-function footerMenu($pdo, $from) {
-    
-        // Incluir el archivo que contiene la API key
-        require_once 'api_key.php';
-
-
-        $stmt = $pdo->query("SELECT * FROM footerAyuda ORDER BY RAND() LIMIT 1");
+        $stmt = $pdo->query("SELECT * FROM headerAyuda ORDER BY RAND() LIMIT 1");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Construir el mensaje del menú
@@ -87,5 +77,9 @@ function footerMenu($pdo, $from) {
 
         // Enviar solicitud de texto
         $response = sendCurlRequestText($body);
+        
+        // Actualizar el estado 
+        update_status($pdo, $from, 'inicio');
 }
+
 ?>

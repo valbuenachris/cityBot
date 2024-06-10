@@ -6,35 +6,48 @@ function cuatro($pdo, $from) {
     $stmt->execute([$from]);
     $status = $stmt->fetchColumn();
     
-    // La primera condicion es solo una puerta. Se debe cambiar al terminar
-    if ($status === 'inicio' ) {
-        
-    // Construir el mensaje del menú
-        $menuMessage = hialuronico($pdo, $from);
-    
-        }
-    
-    elseif ($status === 'menuDos') {
-        
-        // Construir el mensaje del menú
-        $menuMessage = hidratar($pdo, $from);
-
-        }
-        
-    elseif ($status === 'preguntas') {
-        
-        // Construir el mensaje del menú
-        $menuMessage = garantizado($pdo, $from);
-
-        // Actualizar el estado 
-        update_status($pdo, $from, 'garantizado');
-        
+    if ($status === 'inicio') {
+            $menuMessage = menuMascota($pdo, $from);
     }
-    
-    elseif ($status === 'comprarCombos' ) {
-           
-            $menuMessage = comprarComboCuatro($pdo, $from);
-        }
+    elseif ($status === 'accesorios') {
+            $menuMessage = bolsosCarteras($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'joyas') {
+            $menuMessage = pulseras($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'moda') {
+            $menuMessage = menuVestidosBano($pdo, $from);
+    }
+    elseif ($status === 'modaMujer') {
+            $menuMessage = modaPantalonesMujer($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'modaHombre') {
+            $menuMessage = modaHombreCasual($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'hogar') {
+            $menuMessage = menuRopaCama($pdo, $from);
+    }
+    elseif ($status === 'muebles') {
+            $menuMessage = mesas($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'ferreteria') {
+            $menuMessage = pinturas($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'ropa cama') {
+            $menuMessage = sabanas($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'cocina') {
+            $menuMessage = vasosJarras($pdo, $from, $mensaje);
+    }
+    elseif ($status === 'mascota') {
+            $menuMessage = mascotasHigiene($pdo, $from, $mensaje);
+            }
+    elseif ($status === 'estetica y cuidado') {
+            $menuMessage = jabones($pdo, $from, $mensaje);
+            }
+    elseif ($status === 'calzado') {
+            $menuMessage = zapatos($pdo, $from, $mensaje);
+            }
         
     else  {
         // Construir el mensaje del menú

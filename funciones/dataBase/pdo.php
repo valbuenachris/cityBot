@@ -2,8 +2,8 @@
 
      
     $host = 'localhost';
-    $db   = 'educovxy_skinBot';
-    $user = 'educovxy_skinBot';
+    $db   = 'educovxy_botti';
+    $user = 'educovxy_botti';
     $pass = 'Juanes801+';
     $charset = 'utf8mb4';
     

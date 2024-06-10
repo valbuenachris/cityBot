@@ -3,7 +3,10 @@
 function responderSaludo($pdo, $from) {
     try {
         
-        // Verificar si el estado es igual a 'inicio'
+    // Configurar la zona horaria de Colombia
+        date_default_timezone_set('America/Bogota');
+    
+    // Verificar si el estado es igual a 'inicio'
     $stmt = $pdo->prepare("SELECT perfil FROM sesiones WHERE user_id = ?");
     $stmt->execute([$from]);
     $perfil = $stmt->fetchColumn();

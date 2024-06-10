@@ -6,27 +6,14 @@ function siete($pdo, $from) {
     $stmt->execute([$from]);
     $status = $stmt->fetchColumn();
     
-    // La primera condicion es solo una puerta. Se debe cambiar al terminar
-    if ($status === 'inicio' ) {
-        
-        $menuMessage = espuma($pdo, $from);
-        
+    if ($status === 'inicio') {
+            $menuMessage = licores($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'menuDos') {
-        
-        $menuMessage = catalogo($pdo, $from);
-        
-    }
-        
-    elseif ($status === 'preguntas') {
-        
-        $menuMessage = resultados($pdo, $from);
-
+    elseif ($status === 'moda') {
+            $menuMessage = menuModaMujer($pdo, $from, $mensaje);
     }
     
     else  {
-
         $menuMessage = noValida($pdo, $from);
 
     }

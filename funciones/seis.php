@@ -6,41 +6,17 @@ function seis($pdo, $from) {
     $stmt->execute([$from]);
     $status = $stmt->fetchColumn();
     
-    // La primera condicion es solo una puerta. Se debe cambiar al terminar
-    if ($status === 'inicio' ) {
-        
-        // Construir el mensaje del menú
-        $menuMessage = niacinamida($pdo, $from);
-        
+    if ($status === 'inicio') {
+            $menuMessage = detalles($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'menuDos') {
-        
-        
-        // Construir el mensaje del menú
-        $menuMessage = corporal($pdo, $from);
-        
-        }
-        
-    elseif ($status === 'preguntas') {
-        
-        // Construir el mensaje del menú
-        $menuMessage = manchas($pdo, $from);
-
-        // Actualizar el estado 
-        update_status($pdo, $from, 'manchas');
-        
+    elseif ($status === 'moda') {
+            $menuMessage = menuModaInfantil($pdo, $from, $mensaje);
     }
-    
-    elseif ($status === 'comprarCombos' ) {
-           
-            $menuMessage = comprarComboSuper($pdo, $from);
-        }
-
+    elseif ($status === 'hogar') {
+            $menuMessage = menuLimpieza($pdo, $from, $mensaje);
+    }
     
     else  {
-        
-        // Construir el mensaje del menú
         $menuMessage = noValida($pdo, $from);
 
     }

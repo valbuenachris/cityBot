@@ -54,131 +54,12 @@ try {
                 case ($pedido && $pedido['status'] == 'registrar' && ($pedido['nombre'] == 'Sin Nombre')):
                     $responseData = manejarEstadoRegistrar($pdo, $from, $message);
                     break;
-                case ($pedido && ($pedido['perfil'] == 'cantidades')):
-                    $responseData = agregarCantidades($pdo, $from, $message);
+                case ($pedido && $pedido['status'] == 'consulta'):
+                    $responseData = buscarProducto($pdo, $from, $message);
                     break;
                
-                case (($pedido['perfil'] == 'comprar')):
-                    $responseData = comprar($pdo, $from, $message);
-                    break;
-                
-                case ($pedido && ($pedido['status'] == 'nombreCliente')):
-                    $responseData = nombreCliente($pdo, $from, $message);
-                    break;
-                case ($pedido && ($pedido['status'] == 'direccionCliente')):
-                    $responseData = direccionCliente($pdo, $from, $message);
-                    break;
-                case ($pedido && ($pedido['status'] == 'ciudadCliente')):
-                    $responseData = ciudadCliente($pdo, $from, $message);
-                    break;
-                
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'rutina') !== false):
-                    $responseData = rutina($pdo, $from);
-                    break;
-                
-                case (strpos(remove_accents(strtolower($message)), 'horario') !== false || strpos(remove_accents(strtolower($message)), 'horas atienden') !== false 
-                || strpos(remove_accents(strtolower($message)), 'horas hay atencion') !== false || strpos(remove_accents(strtolower($message)), 'horas hay servicio') !== false
-                || strpos(remove_accents(strtolower($message)), 'hora hay servicio') !== false):
-                    $responseData = horario($pdo, $from);
-                    break;
-                    
-                case (strpos(remove_accents(strtolower($message)), 'ubicados') !== false || strpos(remove_accents(strtolower($message)), 'direccion') !== false 
-                || strpos(remove_accents(strtolower($message)), 'ubicacion') !== false ):
-                    $responseData = ubicacion($pdo, $from);
-                    break;
-                
-                case (strpos(remove_accents(strtolower($message)), 'distribuidora') !== false || strpos(remove_accents(strtolower($message)), 'vender al por mayor') !== false 
-                || strpos(remove_accents(strtolower($message)), 'mayorista') !== false):
-                    $responseData = mayorista($pdo, $from);
-                    break;
-                
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'garantizado') !== false 
-                || strpos(remove_accents(strtolower($message)), 'garantia' ) !== false):
-                    $responseData = garantizado($pdo, $from);
-                    break;
-                    
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'componentes' ) !== false || strpos(remove_accents(strtolower($message)), 'ingredientes' ) !== false):
-                    $responseData = componentesTonico($pdo, $from);
-                    break;
-                
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'kit' ) !== false):
-                    $responseData = kit($pdo, $from);
-                    break;
-                
-                // Comparación de mensajes buscando las palabras "componentes" y "tonico" sin importar los acentos
-                case (strpos(remove_accents(strtolower($message)), remove_accents('componentes')) !== false 
-                || strpos(remove_accents(strtolower($message)), remove_accents('ingredientes')) !== false 
-                
-                && 
-                    strpos(remove_accents(strtolower($message)), remove_accents('tonico')) !== false):
-                    $responseData = componentes($pdo, $from);
-                    break;
-                    
-                // Comparación de mensajes buscando las palabras "componentes" y "tonico" sin importar los acentos
-                case (strpos(remove_accents(strtolower($message)), remove_accents('tratar')) !== false 
-                || strpos(remove_accents(strtolower($message)), remove_accents('tratamiento')) !== false || strpos(remove_accents(strtolower($message)), remove_accents('tratan')) !== false 
-                || strpos(remove_accents(strtolower($message)), remove_accents('quitar')) !== false 
-                
-                && 
-                    strpos(remove_accents(strtolower($message)), remove_accents('manchas')) !== false):
-                    $responseData = manchas($pdo, $from);
-                    break;
-                
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'resultado') !== false):
-                    $responseData = resultados($pdo, $from);
-                    break;
-                    
-                case (strpos(remove_accents(strtolower($message)), 'faq') !== false):
-                    $responseData = preguntas($pdo, $from);
-                    break;
-                    
-                case (strpos(remove_accents(strtolower($message)), 'enrojecimiento' ) !== false || strpos(remove_accents(strtolower($message)), 'ardor' ) !== false
-                || strpos(remove_accents(strtolower($message)), 'irritacion' ) !== false || strpos(remove_accents(strtolower($message)), 'cara quemada' ) !== false
-                || strpos(remove_accents(strtolower($message)), 'resequedad' ) !== false || strpos(remove_accents(strtolower($message)), 'reseca' ) !== false):
-                    $responseData = enrojecimiento($pdo, $from);
-                    break;
-                    
-                case (strpos(remove_accents(strtolower($message)), 'catalogo') !== false):
-                    $responseData = catalogo($pdo, $from);
-                    break;
-                
-                case (strpos(remove_accents(strtolower($message)), 'contraentrega') !== false || strpos(remove_accents(strtolower($message)), 'contra entrega') !== false 
-                || strpos(remove_accents(strtolower($message)), 'catalogo') !== false):
-                    $responseData = contraentrega($pdo, $from);
-                    break;
-                    
-                case (strpos(remove_accents(strtolower($message)), 'menu') !== false):
-                    $responseData = headerMenu($pdo, $from);
+                case (strtolower($message) == 'menu'):
                     $responseData = menu($pdo, $from);
-                    $responseData = footerMenu($pdo, $from);
-                    break;    
-                
-                case (strpos(remove_accents(strtolower($message)), 'adi') !== false || strpos(remove_accents(strtolower($message)), 'addi') !== false):
-                    $responseData = addi($pdo, $from);
-                    
-                    break;    
-                    
-                case (strpos(remove_accents(strtolower($message)), 'combo') !== false):
-                    $responseData = combos($pdo, $from);
-                    break;    
-                    
-                
-                case (strtolower($message) == 'fin'):
-                    $responseData = finalizarCompra($pdo, $from);
-                    break;
-                case (strtolower($message) == 'saldo'):
-                    $responseData = verCompra($pdo, $from);
-                    break;
-                case (strtolower($message) == 'rc'):
-                    $responseData = registrarCliente($pdo, $from);
-                    break;
-                case (strtolower($message) == 'mdc'):
-                    $responseData = modificarCompra($pdo, $from);
                     break;
                     
                 case (strtolower($message) == '0'):
@@ -215,23 +96,6 @@ try {
                 case (strtolower($message) == '10'):
                     $responseData = diez($pdo, $from);
                     break;
-                
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'tonico') !== false):
-                    $responseData = tonico($pdo, $from);
-                    break;
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'protector solar') !== false):
-                    $responseData = protector($pdo, $from);
-                    break;
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'serum de cejas') !== false):
-                    $responseData = contorno($pdo, $from);
-                    break;
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'hialuronico') !== false):
-                    $responseData = hialuronico($pdo, $from);
-                    break;
                     
                 // Comparación de mensajes ignorando acentos
                 case (strpos(remove_accents(strtolower($message)), 'buenos dias') !== false || strpos(remove_accents(strtolower($message)), 'buenas tardes') !== false
@@ -239,14 +103,12 @@ try {
                 || strpos(remove_accents(strtolower($message)), 'buen dia') !== false || strpos(remove_accents(strtolower($message)), 'buena tarde') !== false):
                     $responseData = responderSaludo($pdo, $from);
                     break;
-                // Comparación de mensajes ignorando acentos
-                case (strpos(remove_accents(strtolower($message)), 'ayuda') !== false || strpos(remove_accents(strtolower($message)), 'asesor') !== false):
+                case (strpos(strtolower($message), 'ayuda') !== false || strpos(strtolower($message), 'ayudar') !== false || strpos(strtolower($message), 'asesor') !== false):
                     $responseData = ayuda($pdo, $from);
                     break;
-                /*default:
+                default:
                     $responseData = porDefecto($pdo, $from);
                     break;
-                */
     }
     
     // Respuesta al cliente

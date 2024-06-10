@@ -6,13 +6,17 @@ function cero($pdo, $from) {
     $stmt->execute([$from]);
     $status = $stmt->fetchColumn();
     
-    if ($status === 'preguntas') {
+    if ($status === 'inicio') {
         
         // Construir el mensaje del menú
-        $menuMessage = menu($pdo, $from);
+        $menuMessage = buscar($pdo, $from);
 
-        // Actualizar el estado 
-        update_status($pdo, $from, 'inicio');
+    }
+    
+    elseif ($status === 'menuBuscar') {
+        
+        // Construir el mensaje del menú
+        $menuMessage = buscar($pdo, $from);
         
     }
     
