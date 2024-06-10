@@ -1,8 +1,8 @@
 <?php
 
-function cinturones($pdo, $from, $mensaje) {
+function bolsosCarteras($pdo, $from, $mensaje) {
     try {
-        $articulo = 'cinturones';
+        $articulo = 'bolsos y carteras';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -26,7 +26,6 @@ function cinturones($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -39,7 +38,9 @@ function cinturones($pdo, $from, $mensaje) {
             update_status($pdo, $from, $articulo);
             $menuMessage = menuRegresar($pdo, $from);
             
-        } else {
+        } 
+        
+        else {
             // Mezclar los productos en orden aleatorio
             shuffle($productos);
             
@@ -52,7 +53,6 @@ function cinturones($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(

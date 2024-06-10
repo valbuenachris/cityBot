@@ -1,10 +1,12 @@
 <?php
 
-function buscarProducto($pdo, $from, $mensaje) {
+function detalles($pdo, $from, $mensaje) {
     try {
+        $articulo = 'detalles';
+        
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
-            'search' => $mensaje
+            'search' => $articulo
         );
 
         $ch = curl_init();
@@ -22,9 +24,8 @@ function buscarProducto($pdo, $from, $mensaje) {
 
         if (empty($productos)) {
             
-            $respuesta = "No se encontraron productos que coincidan con *'{$mensaje}'*";
+            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -34,14 +35,14 @@ function buscarProducto($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            $menuMessage = menuBuscar($pdo, $from);
+            update_status($pdo, $from, $articulo);
+            $menuMessage = menuRegresar($pdo, $from);
             
         } else {
-            
             // Mezclar los productos en orden aleatorio
             shuffle($productos);
             
-            $respuesta = "Resultados de la búsqueda para *'{$mensaje}'*:\n\n";
+            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
             foreach ($productos as $producto) {
                 $respuesta .= "📦 *{$producto['title']}*\n";
                 $respuesta .= "💲 *{$producto['price']}*\n";
@@ -60,7 +61,10 @@ function buscarProducto($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            $menuMessage = menuBuscar($pdo, $from);
+            
+            // Actualizar el estado 
+            update_status($pdo, $from, $articulo);
+            $menuMessage = menuRegresar($pdo, $from);
             
         }
     } catch (PDOException $e) {
@@ -79,5 +83,4 @@ function buscarProducto($pdo, $from, $mensaje) {
         ];
     }
 }
-
 ?>

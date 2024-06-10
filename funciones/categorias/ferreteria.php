@@ -1,8 +1,8 @@
 <?php
 
-function deportivo($pdo, $from, $mensaje) {
+function construccion($pdo, $from, $mensaje) {
     try {
-        $articulo = 'calzado deportivo';
+        $articulo = 'construccion';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -26,7 +26,6 @@ function deportivo($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -52,7 +51,6 @@ function deportivo($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -85,9 +83,9 @@ function deportivo($pdo, $from, $mensaje) {
     }
 }
 
-function sandalias($pdo, $from, $mensaje) {
+function dotacion($pdo, $from, $mensaje) {
     try {
-        $articulo = 'sandalias';
+        $articulo = 'dotacion';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -111,7 +109,6 @@ function sandalias($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -137,7 +134,6 @@ function sandalias($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -170,9 +166,9 @@ function sandalias($pdo, $from, $mensaje) {
     }
 }
 
-function tacones($pdo, $from, $mensaje) {
+function herramientas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'tacones';
+        $articulo = 'herramientas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -196,7 +192,6 @@ function tacones($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -222,7 +217,6 @@ function tacones($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -255,9 +249,9 @@ function tacones($pdo, $from, $mensaje) {
     }
 }
 
-function zapatos($pdo, $from, $mensaje) {
+function pinturas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'zapatos';
+        $articulo = 'pinturas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -281,7 +275,6 @@ function zapatos($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -307,7 +300,6 @@ function zapatos($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -339,6 +331,5 @@ function zapatos($pdo, $from, $mensaje) {
         ];
     }
 }
-
 
 ?>

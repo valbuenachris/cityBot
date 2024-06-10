@@ -2,9 +2,6 @@
 
 function asesor($pdo, $from) {
     $asesor = '573143181438';
-
-    /*/////////////   MENSAJE PARA EL ASESOR   ////////////*/
-
     
     // Consulta para obtener un mensaje de ayuda aleatorio
     $stmt = $pdo->prepare("SELECT * FROM notiAsesor ORDER BY RAND() LIMIT 1");
@@ -32,10 +29,6 @@ function asesor($pdo, $from) {
         "data" => array("message" => $menuMessage)
     );
     $response = sendCurlRequestText($body);
-
-    
-    
-    /*/////////////   MENSAJE DE AYUDA PARA EL USUARIO   ////////////*/
 
     // Consulta para obtener un mensaje de ayuda aleatorio
     $stmt = $pdo->query("SELECT * FROM headerAsesor ORDER BY RAND() LIMIT 1");

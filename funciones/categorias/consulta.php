@@ -1,12 +1,10 @@
 <?php
 
-function aseo($pdo, $from, $mensaje) {
+function buscarProducto($pdo, $from, $mensaje) {
     try {
-        $articulo = 'aseo';
-        
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
-            'search' => $articulo
+            'search' => $mensaje
         );
 
         $ch = curl_init();
@@ -24,9 +22,8 @@ function aseo($pdo, $from, $mensaje) {
 
         if (empty($productos)) {
             
-            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            $respuesta = "No se encontraron productos que coincidan con *'{$mensaje}'*";
             
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -36,14 +33,14 @@ function aseo($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            update_status($pdo, $from, $articulo);
-            $menuMessage = menuRegresar($pdo, $from);
+            $menuMessage = menuBuscar($pdo, $from);
             
         } else {
+            
             // Mezclar los productos en orden aleatorio
             shuffle($productos);
             
-            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
+            $respuesta = "Resultados de la búsqueda para *'{$mensaje}'*:\n\n";
             foreach ($productos as $producto) {
                 $respuesta .= "📦 *{$producto['title']}*\n";
                 $respuesta .= "💲 *{$producto['price']}*\n";
@@ -52,7 +49,6 @@ function aseo($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
-            require_once 'api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -62,10 +58,7 @@ function aseo($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            
-            // Actualizar el estado 
-            update_status($pdo, $from, $articulo);
-            $menuMessage = menuRegresar($pdo, $from);
+            $menuMessage = menuBuscar($pdo, $from);
             
         }
     } catch (PDOException $e) {

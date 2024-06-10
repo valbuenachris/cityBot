@@ -2,9 +2,6 @@
 
 function catalogo($pdo, $from) {
     
-        require_once 'api_key.php';
-
-        /*/////////////   MENSAJE   ////////////*/
 
         $stmt = $pdo->query("SELECT * FROM headerCatalogo ORDER BY RAND() LIMIT 1");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,8 +42,6 @@ function catalogo($pdo, $from) {
         
         // Enviar solicitud de texto
         $response = sendCurlRequestImage($body);
-        
-    
         
         /*/////////////   MENSAJE SUBHEADER   ////////////*/
 

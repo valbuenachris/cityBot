@@ -1,8 +1,8 @@
 <?php
 
-function bolsosCarteras($pdo, $from, $mensaje) {
+function aseo($pdo, $from, $mensaje) {
     try {
-        $articulo = 'bolsos y carteras';
+        $articulo = 'aseo';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -26,7 +26,7 @@ function bolsosCarteras($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
-            require_once 'api_key.php';
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -84,4 +84,5 @@ function bolsosCarteras($pdo, $from, $mensaje) {
         ];
     }
 }
+
 ?>

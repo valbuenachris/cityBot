@@ -3,7 +3,6 @@
     function borrar($pdo, $from) {
     try {
         
-
         // Eliminar registros de la tabla 'sesiones' donde 'user_id' coincide con el valor dado
         $stmt = $pdo->prepare("DELETE FROM sesiones WHERE user_id = ?");
         $stmt->execute([$from]);
