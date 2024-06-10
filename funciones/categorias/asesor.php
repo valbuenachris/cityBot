@@ -22,7 +22,9 @@ function asesor($pdo, $from) {
     }
     
     // Enviar mensaje al asesor
+    require_once __DIR__ . '/../api_key.php';
     $api_key = API_KEY;
+    
     $body = array(
         "api_key" => $api_key,
         "receiver" => $asesor,

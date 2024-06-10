@@ -36,7 +36,8 @@ function responderSaludo($pdo, $from) {
         $menuMessage = $resultado['mensaje'];
 
         // Establecer la API utilizando la constante definida en api_key.php
-        $api_key = API_KEY;
+        require_once __DIR__ . '/../api_key.php';
+            $api_key = API_KEY;
 
         // Mensaje de texto con el saludo
         $body = array(

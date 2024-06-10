@@ -1,8 +1,8 @@
 <?php
 
-function cubiertos($pdo, $from, $mensaje) {
+function aretes($pdo, $from, $mensaje) {
     try {
-        $articulo = 'cubiertos';
+        $articulo = 'aretes';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -85,9 +85,9 @@ function cubiertos($pdo, $from, $mensaje) {
     }
 }
 
-function ollas($pdo, $from, $mensaje) {
+function cadenas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'ollas';
+        $articulo = 'cadenas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -110,6 +110,7 @@ function ollas($pdo, $from, $mensaje) {
         if (empty($productos)) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -137,6 +138,7 @@ function ollas($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
@@ -170,9 +172,9 @@ function ollas($pdo, $from, $mensaje) {
     }
 }
 
-function utencilios($pdo, $from, $mensaje) {
+function juegos($pdo, $from, $mensaje) {
     try {
-        $articulo = 'utencilios';
+        $articulo = 'juegos';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -195,6 +197,7 @@ function utencilios($pdo, $from, $mensaje) {
         if (empty($productos)) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -222,6 +225,7 @@ function utencilios($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
@@ -255,9 +259,9 @@ function utencilios($pdo, $from, $mensaje) {
     }
 }
 
-function vajillas($pdo, $from, $mensaje) {
+function pulseras($pdo, $from, $mensaje) {
     try {
-        $articulo = 'vajillas';
+        $articulo = 'pulseras';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -280,6 +284,7 @@ function vajillas($pdo, $from, $mensaje) {
         if (empty($productos)) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -307,6 +312,7 @@ function vajillas($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
@@ -340,9 +346,9 @@ function vajillas($pdo, $from, $mensaje) {
     }
 }
 
-function vasosJarras($pdo, $from, $mensaje) {
+function tobilleras($pdo, $from, $mensaje) {
     try {
-        $articulo = 'vasos y jarras';
+        $articulo = 'tobilleras';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -365,6 +371,7 @@ function vasosJarras($pdo, $from, $mensaje) {
         if (empty($productos)) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -392,6 +399,7 @@ function vasosJarras($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
@@ -424,6 +432,5 @@ function vasosJarras($pdo, $from, $mensaje) {
         ];
     }
 }
-
 
 ?>

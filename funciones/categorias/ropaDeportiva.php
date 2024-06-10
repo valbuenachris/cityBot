@@ -1,12 +1,10 @@
 <?php
 
-function cubiertos($pdo, $from, $mensaje) {
+function ropaDeportivaNinos($pdo, $from, $mensaje) {
     try {
-        $articulo = 'cubiertos';
-        
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
-            'search' => $articulo
+            'search' => 'ropa deportiva'
         );
 
         $ch = curl_init();
@@ -24,7 +22,7 @@ function cubiertos($pdo, $from, $mensaje) {
 
         if (empty($productos)) {
             
-            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            $respuesta = "No se encontraron productos que coincidan con *'ropa deportiva niños'*";
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -36,14 +34,17 @@ function cubiertos($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            update_status($pdo, $from, $articulo);
+            
+            // Actualizar el estado 
+            update_status($pdo, $from, 'ropaDeportivaNinos');
+        
             $menuMessage = menuRegresar($pdo, $from);
             
         } else {
             // Mezclar los productos en orden aleatorio
             shuffle($productos);
             
-            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
+            $respuesta = "Resultados de la búsqueda para *'ropa deportiva niños'*:\n\n";
             foreach ($productos as $producto) {
                 $respuesta .= "📦 *{$producto['title']}*\n";
                 $respuesta .= "💲 *{$producto['price']}*\n";
@@ -62,9 +63,6 @@ function cubiertos($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            
-            // Actualizar el estado 
-            update_status($pdo, $from, $articulo);
             $menuMessage = menuRegresar($pdo, $from);
             
         }
@@ -85,13 +83,11 @@ function cubiertos($pdo, $from, $mensaje) {
     }
 }
 
-function ollas($pdo, $from, $mensaje) {
+function ropaDeportivaMujeres($pdo, $from, $mensaje) {
     try {
-        $articulo = 'ollas';
-        
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
-            'search' => $articulo
+            'search' => 'ropa deportiva mujeres'
         );
 
         $ch = curl_init();
@@ -109,7 +105,7 @@ function ollas($pdo, $from, $mensaje) {
 
         if (empty($productos)) {
             
-            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            $respuesta = "No se encontraron productos que coincidan con *'ropa deportiva mujeres'*";
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -121,14 +117,17 @@ function ollas($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            update_status($pdo, $from, $articulo);
+            
+            // Actualizar el estado 
+            update_status($pdo, $from, 'ropaDeportivaMujeres');
+        
             $menuMessage = menuRegresar($pdo, $from);
             
         } else {
             // Mezclar los productos en orden aleatorio
             shuffle($productos);
             
-            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
+            $respuesta = "Resultados de la búsqueda para *'ropa deportiva mujeres'*:\n\n";
             foreach ($productos as $producto) {
                 $respuesta .= "📦 *{$producto['title']}*\n";
                 $respuesta .= "💲 *{$producto['price']}*\n";
@@ -147,9 +146,6 @@ function ollas($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            
-            // Actualizar el estado 
-            update_status($pdo, $from, $articulo);
             $menuMessage = menuRegresar($pdo, $from);
             
         }
@@ -170,13 +166,11 @@ function ollas($pdo, $from, $mensaje) {
     }
 }
 
-function utencilios($pdo, $from, $mensaje) {
+function ropaDeportivaHombres($pdo, $from, $mensaje) {
     try {
-        $articulo = 'utencilios';
-        
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
-            'search' => $articulo
+            'search' => 'ropa deportiva hombres'
         );
 
         $ch = curl_init();
@@ -194,7 +188,7 @@ function utencilios($pdo, $from, $mensaje) {
 
         if (empty($productos)) {
             
-            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
+            $respuesta = "No se encontraron productos que coincidan con *'ropa deportiva hombres'*";
             
             require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
@@ -206,14 +200,17 @@ function utencilios($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            update_status($pdo, $from, $articulo);
+            
+            // Actualizar el estado 
+            update_status($pdo, $from, 'ropaDeportivaHombres');
+        
             $menuMessage = menuRegresar($pdo, $from);
             
         } else {
             // Mezclar los productos en orden aleatorio
             shuffle($productos);
             
-            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
+            $respuesta = "Resultados de la búsqueda para *'ropa deportiva hombres'*:\n\n";
             foreach ($productos as $producto) {
                 $respuesta .= "📦 *{$producto['title']}*\n";
                 $respuesta .= "💲 *{$producto['price']}*\n";
@@ -232,179 +229,6 @@ function utencilios($pdo, $from, $mensaje) {
             );
 
             $response = sendCurlRequestText($body);
-            
-            // Actualizar el estado 
-            update_status($pdo, $from, $articulo);
-            $menuMessage = menuRegresar($pdo, $from);
-            
-        }
-    } catch (PDOException $e) {
-        return [
-            'message_type' => 'text',
-            'message' => [
-                'message' => 'Error en la base de datos: ' . $e->getMessage()
-            ]
-        ];
-    } catch (Exception $e) {
-        return [
-            'message_type' => 'text',
-            'message' => [
-                'message' => 'Error: ' . $e->getMessage()
-            ]
-        ];
-    }
-}
-
-function vajillas($pdo, $from, $mensaje) {
-    try {
-        $articulo = 'vajillas';
-        
-        $api_url = 'https://tienderu.com/myApiProject/myApi.php';
-        $data = array(
-            'search' => $articulo
-        );
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $api_url . '?' . http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
-
-        $response = curl_exec($ch);
-        if ($response === false) {
-            throw new Exception('Error en la solicitud cURL: ' . curl_error($ch));
-        }
-        curl_close($ch);
-
-        $productos = json_decode($response, true);
-
-        if (empty($productos)) {
-            
-            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
-            
-            require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
-
-            $body = array(
-                "api_key" => $api_key,
-                "receiver" => $from,
-                "data" => array("message" => $respuesta)
-            );
-
-            $response = sendCurlRequestText($body);
-            update_status($pdo, $from, $articulo);
-            $menuMessage = menuRegresar($pdo, $from);
-            
-        } else {
-            // Mezclar los productos en orden aleatorio
-            shuffle($productos);
-            
-            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
-            foreach ($productos as $producto) {
-                $respuesta .= "📦 *{$producto['title']}*\n";
-                $respuesta .= "💲 *{$producto['price']}*\n";
-                $respuesta .= "🛒 {$producto['external_link']}\n";
-                $respuesta .= "🛍️ *{$producto['shop_name']}*\n";
-                $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
-            }
-
-            require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
-
-            $body = array(
-                "api_key" => $api_key,
-                "receiver" => $from,
-                "data" => array("message" => $respuesta)
-            );
-
-            $response = sendCurlRequestText($body);
-            
-            // Actualizar el estado 
-            update_status($pdo, $from, $articulo);
-            $menuMessage = menuRegresar($pdo, $from);
-            
-        }
-    } catch (PDOException $e) {
-        return [
-            'message_type' => 'text',
-            'message' => [
-                'message' => 'Error en la base de datos: ' . $e->getMessage()
-            ]
-        ];
-    } catch (Exception $e) {
-        return [
-            'message_type' => 'text',
-            'message' => [
-                'message' => 'Error: ' . $e->getMessage()
-            ]
-        ];
-    }
-}
-
-function vasosJarras($pdo, $from, $mensaje) {
-    try {
-        $articulo = 'vasos y jarras';
-        
-        $api_url = 'https://tienderu.com/myApiProject/myApi.php';
-        $data = array(
-            'search' => $articulo
-        );
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $api_url . '?' . http_build_query($data));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPGET, true);
-
-        $response = curl_exec($ch);
-        if ($response === false) {
-            throw new Exception('Error en la solicitud cURL: ' . curl_error($ch));
-        }
-        curl_close($ch);
-
-        $productos = json_decode($response, true);
-
-        if (empty($productos)) {
-            
-            $respuesta = "No se encontraron productos que coincidan con *$articulo*";
-            
-            require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
-
-            $body = array(
-                "api_key" => $api_key,
-                "receiver" => $from,
-                "data" => array("message" => $respuesta)
-            );
-
-            $response = sendCurlRequestText($body);
-            update_status($pdo, $from, $articulo);
-            $menuMessage = menuRegresar($pdo, $from);
-            
-        } else {
-            // Mezclar los productos en orden aleatorio
-            shuffle($productos);
-            
-            $respuesta = "Resultados de la búsqueda para *$articulo*:\n\n";
-            foreach ($productos as $producto) {
-                $respuesta .= "📦 *{$producto['title']}*\n";
-                $respuesta .= "💲 *{$producto['price']}*\n";
-                $respuesta .= "🛒 {$producto['external_link']}\n";
-                $respuesta .= "🛍️ *{$producto['shop_name']}*\n";
-                $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
-            }
-
-            require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
-
-            $body = array(
-                "api_key" => $api_key,
-                "receiver" => $from,
-                "data" => array("message" => $respuesta)
-            );
-
-            $response = sendCurlRequestText($body);
-            
-            // Actualizar el estado 
-            update_status($pdo, $from, $articulo);
             $menuMessage = menuRegresar($pdo, $from);
             
         }

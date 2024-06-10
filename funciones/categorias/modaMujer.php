@@ -1,8 +1,8 @@
 <?php
 
-function cubiertos($pdo, $from, $mensaje) {
+function modaBlusas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'cubiertos';
+        $articulo = 'blusas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -27,7 +27,7 @@ function cubiertos($pdo, $from, $mensaje) {
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -53,7 +53,7 @@ function cubiertos($pdo, $from, $mensaje) {
             }
 
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -85,9 +85,9 @@ function cubiertos($pdo, $from, $mensaje) {
     }
 }
 
-function ollas($pdo, $from, $mensaje) {
+function modaCasual($pdo, $from, $mensaje) {
     try {
-        $articulo = 'ollas';
+        $articulo = 'moda mujer casual';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -112,7 +112,7 @@ function ollas($pdo, $from, $mensaje) {
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -138,7 +138,7 @@ function ollas($pdo, $from, $mensaje) {
             }
 
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -170,9 +170,9 @@ function ollas($pdo, $from, $mensaje) {
     }
 }
 
-function utencilios($pdo, $from, $mensaje) {
+function modaFaldasVestidos($pdo, $from, $mensaje) {
     try {
-        $articulo = 'utencilios';
+        $articulo = 'faldas y vestidos';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -197,7 +197,7 @@ function utencilios($pdo, $from, $mensaje) {
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -223,7 +223,7 @@ function utencilios($pdo, $from, $mensaje) {
             }
 
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -255,9 +255,9 @@ function utencilios($pdo, $from, $mensaje) {
     }
 }
 
-function vajillas($pdo, $from, $mensaje) {
+function modaPantalonesMujer($pdo, $from, $mensaje) {
     try {
-        $articulo = 'vajillas';
+        $articulo = 'pantalones para dama';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -282,7 +282,7 @@ function vajillas($pdo, $from, $mensaje) {
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -308,7 +308,7 @@ function vajillas($pdo, $from, $mensaje) {
             }
 
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -340,9 +340,9 @@ function vajillas($pdo, $from, $mensaje) {
     }
 }
 
-function vasosJarras($pdo, $from, $mensaje) {
+function modaRopaIntima($pdo, $from, $mensaje) {
     try {
-        $articulo = 'vasos y jarras';
+        $articulo = 'ropa íntima';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -367,7 +367,7 @@ function vasosJarras($pdo, $from, $mensaje) {
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -393,7 +393,7 @@ function vasosJarras($pdo, $from, $mensaje) {
             }
 
             require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+        $api_key = API_KEY;
 
             $body = array(
                 "api_key" => $api_key,
@@ -424,6 +424,5 @@ function vasosJarras($pdo, $from, $mensaje) {
         ];
     }
 }
-
 
 ?>

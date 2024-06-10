@@ -26,6 +26,7 @@ function bolsosCarteras($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(

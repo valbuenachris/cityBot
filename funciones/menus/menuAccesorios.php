@@ -1,19 +1,25 @@
 <?php
 
-function catalogo($pdo, $from) {
+function menuAccesorios($pdo, $from) {
     
+        // Incluir el archivo que contiene la API key
+        require_once __DIR__ . '/../api_key.php';
+        $api_key = API_KEY;
 
-        $stmt = $pdo->query("SELECT * FROM headerCatalogo ORDER BY RAND() LIMIT 1");
+        /*/////////////   MENSAJE SUBHEADER   ////////////*/
+
+        $stmt = $pdo->query("SELECT * FROM headerAccesorios ORDER BY RAND() LIMIT 1");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Construir el mensaje del menú
         $menuMessage = "";
         foreach ($menuItems as $item) {
-            $menuMessage .= "{$item['mensaje']}\n";
+            $menuMessage .= "{$item['mensaje']} \n";
         }
 
+        // Establecer la API utilizando la constante definida en api_key.php
         require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+                $api_key = API_KEY;
 
         // Mensaje de texto con el menú
         $body = array(
@@ -25,31 +31,12 @@ function catalogo($pdo, $from) {
         // Enviar solicitud de texto
         $response = sendCurlRequestText($body);
         
-        //////////////   MENSAJE IMAGEN  ////////////
-        
-        // Establecer la API utilizando la constante definida en api_key.php
-        require_once __DIR__ . '/../api_key.php';
-        $api_key = API_KEY;
-        
-        $body = array(
-            "api_key" => $api_key,
-            "receiver" => "$from",
-            "data" => array(
-                "url" => "http://bot.tienderu.com/app/storage?url=1/catalogoSkinNuevo.pdf",
-                "media_type" => "file",
-                "caption" => ""
-            )
-        );
-        
-        // Enviar solicitud de texto
-        $response = sendCurlRequestImage($body);
-        
         /*/////////////   MENSAJE SUBHEADER   ////////////*/
 
-        $stmt = $pdo->query("SELECT * FROM menuCatalogo");
+        $stmt = $pdo->query("SELECT * FROM menuAccesorios");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Construir el mensaje del menú
+        // Construir el mensaje del menú principal
         $menuMessage = "";
         foreach ($menuItems as $item) {
             $menuMessage .= "{$item['icono']} {$item['item']}\n";
@@ -57,7 +44,7 @@ function catalogo($pdo, $from) {
 
         // Establecer la API utilizando la constante definida en api_key.php
         require_once __DIR__ . '/../api_key.php';
-            $api_key = API_KEY;
+                $api_key = API_KEY;
 
         // Mensaje de texto con el menú
         $body = array(
@@ -67,11 +54,10 @@ function catalogo($pdo, $from) {
         );
 
         // Enviar solicitud de texto
-        $response = sendCurlRequestText($body);    
+        $response = sendCurlRequestText($body);
         
         // Actualizar el estado 
-        update_status($pdo, $from, 'catalogo');
-       
- }
-    
+        update_status($pdo, $from, 'accesorios');
+}
+
 ?>

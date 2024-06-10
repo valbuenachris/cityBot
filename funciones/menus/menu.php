@@ -1,16 +1,44 @@
 <?php
 
-function ayuda($pdo, $from) {
+function menu($pdo, $from) {
     
-        /*/////////////   MENSAJE   ////////////*/
+        
+        require_once __DIR__ . '/../api_key.php';
+        $api_key = API_KEY;
 
-        $stmt = $pdo->query("SELECT * FROM ayuda ORDER BY RAND() LIMIT 1");
+        $stmt = $pdo->query("SELECT * FROM headerMenu ORDER BY RAND() LIMIT 1");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Construir el mensaje del menú
         $menuMessage = "";
         foreach ($menuItems as $item) {
-            $menuMessage .= "{$item['mensaje']}\n";
+            $menuMessage .= "{$item['mensaje']} \n";
+        }
+
+        // Establecer la API utilizando la constante definida en api_key.php
+        require_once __DIR__ . '/../api_key.php';
+        $api_key = API_KEY;
+
+        // Mensaje de texto con el menú
+        $body = array(
+            "api_key" => $api_key,
+            "receiver" => $from,
+            "data" => array("message" => $menuMessage)
+        );
+
+        // Enviar solicitud de texto
+        $response = sendCurlRequestText($body);
+        
+        
+        /*/////////////   MENSAJE SUBHEADER   ////////////*/
+
+        $stmt = $pdo->query("SELECT * FROM menu");
+        $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Construir el mensaje del menú principal
+        $menuMessage = " 🛍️ *MENU PRINCIPAL*\n\n";
+        foreach ($menuItems as $item) {
+            $menuMessage .= "{$item['icono']} {$item['item']}\n";
         }
 
         // Establecer la API utilizando la constante definida en api_key.php
@@ -29,40 +57,17 @@ function ayuda($pdo, $from) {
         
         /*/////////////   MENSAJE SUBHEADER   ////////////*/
 
-        $stmt = $pdo->query("SELECT * FROM menuAyuda");
+        $stmt = $pdo->query("SELECT * FROM headerAyuda ORDER BY RAND() LIMIT 1");
         $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Construir el mensaje del menú
         $menuMessage = "";
         foreach ($menuItems as $item) {
-            $menuMessage .= "{$item['icono']} {$item['item']}\n";
+            $menuMessage .= "{$item['mensaje']} \n";
         }
 
         // Establecer la API utilizando la constante definida en api_key.php
-        $api_key = API_KEY;
-
-        // Mensaje de texto con el menú
-        $body = array(
-            "api_key" => $api_key,
-            "receiver" => $from,
-            "data" => array("message" => $menuMessage)
-        );
-
-        // Enviar solicitud de texto
-        $response = sendCurlRequestText($body); 
-        
-        /*/////////////   MENSAJE   ////////////*/
-
-        $stmt = $pdo->query("SELECT * FROM subAyuda ORDER BY RAND() LIMIT 1");
-        $menuItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Construir el mensaje del menú
-        $menuMessage = "";
-        foreach ($menuItems as $item) {
-            $menuMessage .= "{$item['mensaje']}\n";
-        }
-
-        // Establecer la API utilizando la constante definida en api_key.php
+        require_once __DIR__ . '/../api_key.php';
         $api_key = API_KEY;
 
         // Mensaje de texto con el menú
@@ -76,7 +81,7 @@ function ayuda($pdo, $from) {
         $response = sendCurlRequestText($body);
         
         // Actualizar el estado 
-        update_status($pdo, $from, 'ayuda');
-    }
-    
+        update_status($pdo, $from, 'inicio');
+}
+
 ?>

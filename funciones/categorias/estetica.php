@@ -26,6 +26,7 @@ function cosmeticos($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -51,6 +52,7 @@ function cosmeticos($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -109,6 +111,7 @@ function cremas($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -134,6 +137,7 @@ function cremas($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -192,6 +196,7 @@ function desodorantes($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -217,6 +222,7 @@ function desodorantes($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -275,6 +281,7 @@ function jabones($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -300,6 +307,7 @@ function jabones($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -358,6 +366,7 @@ function perfumes($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -383,6 +392,7 @@ function perfumes($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(

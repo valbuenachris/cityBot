@@ -26,6 +26,7 @@ function farmacias($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -51,6 +52,7 @@ function farmacias($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -109,6 +111,7 @@ function productosNaturistas($pdo, $from, $mensaje) {
             
             $respuesta = "No se encontraron productos que coincidan con *$articulo*";
             
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(
@@ -134,6 +137,7 @@ function productosNaturistas($pdo, $from, $mensaje) {
                 $respuesta .= "📞 {$producto['phone_number']}\n________________________\n\n";
             }
 
+            require_once __DIR__ . '/../api_key.php';
             $api_key = API_KEY;
 
             $body = array(

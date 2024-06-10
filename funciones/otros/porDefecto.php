@@ -23,8 +23,6 @@ function porDefecto($pdo, $from) {
             $menuMessage = inicioBienvenida($pdo, $from);
         }
         
-        
-
         return $responseData;
         
     } catch (PDOException $e) {

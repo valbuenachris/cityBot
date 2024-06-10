@@ -1,8 +1,8 @@
 <?php
 
-function cubiertos($pdo, $from, $mensaje) {
+function cobijas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'cubiertos';
+        $articulo = 'cobijas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -85,9 +85,9 @@ function cubiertos($pdo, $from, $mensaje) {
     }
 }
 
-function ollas($pdo, $from, $mensaje) {
+function cubrelechos($pdo, $from, $mensaje) {
     try {
-        $articulo = 'ollas';
+        $articulo = 'cubrelechos';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -170,9 +170,9 @@ function ollas($pdo, $from, $mensaje) {
     }
 }
 
-function utencilios($pdo, $from, $mensaje) {
+function edredones($pdo, $from, $mensaje) {
     try {
-        $articulo = 'utencilios';
+        $articulo = 'edredones';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -255,9 +255,9 @@ function utencilios($pdo, $from, $mensaje) {
     }
 }
 
-function vajillas($pdo, $from, $mensaje) {
+function sabanas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'vajillas';
+        $articulo = 'sabanas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -340,9 +340,9 @@ function vajillas($pdo, $from, $mensaje) {
     }
 }
 
-function vasosJarras($pdo, $from, $mensaje) {
+function toallas($pdo, $from, $mensaje) {
     try {
-        $articulo = 'vasos y jarras';
+        $articulo = 'toallas';
         
         $api_url = 'https://tienderu.com/myApiProject/myApi.php';
         $data = array(
@@ -424,6 +424,5 @@ function vasosJarras($pdo, $from, $mensaje) {
         ];
     }
 }
-
 
 ?>
